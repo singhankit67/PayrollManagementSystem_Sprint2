@@ -25,7 +25,7 @@ namespace PayrollManagementSystem_Sprint2
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
-            //services.AddSession()
+            services.AddSession();
           
 
         }
