@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PayrollManagementSystem_Sprint2.Models.PayrollMaster>
+
+@{
+    ViewData["Title"] = "Payroll Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+        <h1>Payroll Report</h1>
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Employee)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmployeeDesignation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmployeeSalary)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmployeeGrade)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeDesignation)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeSalary)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeGrade)
+                        </td>
+                        <td>
+                            <a asp-action="ViewPayrollDetails" asp-route-id="@item.EmployeeId">Generate Salary</a> |
+                            <a asp-action="EditGradeDetails" asp-route-id="@item.EmployeeId">Edit</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <p>
+            
+            <a asp-action="Index">Back to Dashboard</a>
+        </p>
+
+        

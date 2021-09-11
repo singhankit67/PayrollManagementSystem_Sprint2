@@ -1,0 +1,97 @@
+﻿@model PayrollManagementSystem_Sprint2.Models.EmployeeMaster
+
+@{
+    ViewData["Title"] = "Create New Employee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h1>Create New Employee</h1>
+
+@if (ViewBag.Message != null)
+{
+    <p style="color:@ViewBag.Color">@ViewBag.Message</p>
+}
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateNewEmployee">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EmployeeId" class="control-label"></label>
+                <input asp-for="EmployeeId" class="form-control" maxlength="20" />
+                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeePassword" class="control-label"></label>
+                <input asp-for="EmployeePassword" class="form-control" maxlength="20" />
+                <span asp-validation-for="EmployeePassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeDoj" class="control-label"></label>
+                <input asp-for="EmployeeDoj" class="form-control" />
+                <span asp-validation-for="EmployeeDoj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeFirstname" class="control-label"></label>
+                <input asp-for="EmployeeFirstname" class="form-control" maxlength="20" />
+                <span asp-validation-for="EmployeeFirstname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeLastname" class="control-label"></label>
+                <input asp-for="EmployeeLastname" class="form-control" maxlength="20" />
+                <span asp-validation-for="EmployeeLastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeUserName" class="control-label"></label>
+                <input asp-for="EmployeeUserName" class="form-control" maxlength="20" />
+                <span asp-validation-for="EmployeeUserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AdminPrivilege" class="control-label"></label>
+                <input asp-for="AdminPrivilege" class="form-control" />
+                <span asp-validation-for="AdminPrivilege" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <select asp-for="Gender" class="form-control">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="O">Others</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MaritalStatus" class="control-label"></label>
+                <select asp-for="MaritalStatus" class="form-control">
+                    <option value="Married">Married</option>
+                    <option value="Not Married">Unmaried</option>
+                    <option value="N/A">NA</option>
+                </select>
+                <span asp-validation-for="MaritalStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+
+
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Employees">Back to Employee List</a>
+</div>
+
+
+
+
+
+
+
+
+
+

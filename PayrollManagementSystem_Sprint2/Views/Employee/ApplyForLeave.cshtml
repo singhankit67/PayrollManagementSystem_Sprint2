@@ -1,0 +1,75 @@
+﻿@model PayrollManagementSystem_Sprint2.Models.LeaveDetail
+
+@{
+    ViewData["Title"] = "Apply For Leave";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    DateTime current = DateTime.Today;
+}
+
+<h1>Apply For Leave</h1>
+@if (ViewBag.Message != null)
+{
+    <p style="color:@ViewBag.Color">@ViewBag.Message</p>
+}
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ApplyForLeave">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="EmployeeId" class="control-label"></label>
+                <input asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId" maxlength="20"></input>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveDate" class="control-label"></label>
+                <input asp-for="LeaveDate" class="form-control" />
+                <span asp-validation-for="LeaveDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplyDate" class="control-label"></label>
+                <input type="date" asp-for="ApplyDate" class="form-control" />
+                <span asp-validation-for="ApplyDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveDays" class="control-label"></label>
+                <input asp-for="LeaveDays" class="form-control" max="5" min="1" />
+                <span asp-validation-for="LeaveDays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reason" class="control-label"></label>
+                <input asp-for="Reason" class="form-control" />
+                <span asp-validation-for="Reason" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveType" class="control-label"></label>
+                <select asp-for="LeaveType" class="form-control" asp-items="ViewBag.LeaveType">
+                    <option>Annual Leave</option>
+                    <option>Sick Leave</option>
+                    <option>Casual Leave</option>
+                    <option>Marriage Leave</option>
+                    <option>Paternity Leave</option>
+                    <option>Maternity Leave</option>
+                    <option>Compensatory Leave</option>
+                    <option>Bereavement Leave</option>
+                    <option>Loss of Pay Leave</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveMonth" class="control-label"></label>
+                <input asp-for="LeaveMonth" class="form-control" max="12" min="1" />
+                <span asp-validation-for="LeaveMonth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Dashboard</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

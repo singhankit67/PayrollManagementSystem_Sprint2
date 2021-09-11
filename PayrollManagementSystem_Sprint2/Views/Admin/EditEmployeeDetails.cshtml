@@ -1,0 +1,70 @@
+﻿@model PayrollManagementSystem_Sprint2.Models.EmployeeMaster
+
+@{
+    ViewData["Title"] = "Edit Employee Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Edit Employee Details</h1>
+@if (ViewBag.Message != null)
+{
+    <p style="color:@ViewBag.Color">@ViewBag.Message</p>
+}
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditEmployeeDetails">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="EmployeeId" />
+            <div class="form-group">
+                <label asp-for="EmployeeDoj" class="control-label"></label>
+                <input asp-for="EmployeeDoj" class="form-control" />
+                <span asp-validation-for="EmployeeDoj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeFirstname" class="control-label"></label>
+                <input asp-for="EmployeeFirstname" class="form-control" maxlength="20"/>
+                <span asp-validation-for="EmployeeFirstname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeLastname" class="control-label"></label>
+                <input asp-for="EmployeeLastname" class="form-control" maxlength="20"/>
+                <span asp-validation-for="EmployeeLastname" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="AdminPrivilege" /> @Html.DisplayNameFor(model => model.AdminPrivilege)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <select asp-for="Gender" class="form-control">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="O">Others</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MaritalStatus" class="control-label"></label>
+                <select asp-for="MaritalStatus" class="form-control">
+                    <option value="Married">Married</option>
+                    <option value="Not Married">Unmaried</option>
+                    <option value="N/A">NA</option>
+                </select>
+                <span asp-validation-for="MaritalStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Employees">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

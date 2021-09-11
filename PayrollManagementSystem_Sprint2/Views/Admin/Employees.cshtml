@@ -1,0 +1,95 @@
+﻿@model IEnumerable<PayrollManagementSystem_Sprint2.Models.EmployeeMaster>
+
+@{
+    ViewData["Title"] = "Employees";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+        <h1>Employees</h1>
+
+        <p>
+            <a asp-action="CreateNewEmployee">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmployeeId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmployeePassword)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmployeeDoj)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmployeeFirstname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmployeeLastname)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmployeeUserName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AdminPrivilege)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MaritalStatus)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <th>
+                            @Html.DisplayFor(modelItem => item.EmployeeId)
+                        </th>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeePassword)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeDoj)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeFirstname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeLastname)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeUserName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AdminPrivilege)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Gender)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MaritalStatus)
+                        </td>
+                        <td>
+                            <a asp-action="EditEmployeeDetails" asp-route-id="@item.EmployeeId">Edit</a> |
+                            <a asp-action="ViewAddressDetails" asp-route-id="@item.EmployeeId">More Details</a> |
+                            <a asp-action="EmployeeDelete" asp-route-id="@item.EmployeeId">Delete</a> |
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>
+            <p>
+                <a asp-action="Index">Back To Dashboard</a>
+            </p>
+
+        </div>
+
+
+        

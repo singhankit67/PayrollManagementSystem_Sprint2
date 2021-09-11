@@ -1,0 +1,85 @@
+﻿@model IEnumerable<PayrollManagementSystem_Sprint2.Models.TimeSheet>
+
+@{
+    ViewData["Title"] = "Employee Timesheets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+        <h1>Employee Timesheets</h1>
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmployeeId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TimesheetId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.WorkDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EmployeeActivity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.WorkMonth)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NumberOfHoursSpent)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TotalHoursPerDay)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </th>
+
+                    <th></th>s
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TimesheetId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.WorkDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeActivity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.WorkMonth)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NumberOfHoursSpent)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalHoursPerDay)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Status)
+                        </td>
+
+                        <td>
+                            <a asp-action="EditTimesheet" asp-route-id="@item.IndexTs">Edit status</a>
+                        </td>
+                    </tr>
+
+
+
+                }
+            </tbody>
+        </table>
+        <div>
+            <a asp-action="Index">Back to Dashboard</a>
+        </div>
+
+        

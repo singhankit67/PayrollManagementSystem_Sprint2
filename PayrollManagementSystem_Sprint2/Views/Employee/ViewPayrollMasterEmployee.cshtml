@@ -1,0 +1,42 @@
+﻿@model PayrollManagementSystem_Sprint2.Models.PayrollMaster
+
+@{
+    ViewData["Title"] = "ViewPayrollMasterEmployee";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ViewPayrollMasterEmployee</h1>
+
+<div>
+    <h4>PayrollMaster</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployeeDesignation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeDesignation)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployeeSalary)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeSalary)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployeeGrade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeGrade)
+        </dd>
+    </dl>
+</div>
+<div>    
+    <a asp-action="Index">Back to Dashboard</a>
+</div>

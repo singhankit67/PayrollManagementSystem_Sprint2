@@ -1,0 +1,86 @@
+﻿@model PayrollManagementSystem_Sprint2.Models.LeaveDetail
+
+@{
+    ViewData["Title"] = "Approve Leaves";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h1>Approve Leaves</h1>
+
+@if (ViewBag.Message != null)
+{
+    <p style="color:@ViewBag.Color">@ViewBag.Message</p>
+}
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditLeaveStatus">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IndexLd" />
+            <div class="form-group">
+                <label asp-for="EmployeeId" class="control-label"></label>
+                <input asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId" readonly></input>
+                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveDate" class="control-label"></label>
+                <input asp-for="LeaveDate" class="form-control" readonly />
+                <span asp-validation-for="LeaveDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplyDate" class="control-label"></label>
+                <input asp-for="ApplyDate" class="form-control" readonly />
+                <span asp-validation-for="ApplyDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveDays" class="control-label"></label>
+                <input asp-for="LeaveDays" class="form-control" readonly />
+                <span asp-validation-for="LeaveDays" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reason" class="control-label"></label>
+                <input asp-for="Reason" class="form-control" readonly />
+                <span asp-validation-for="Reason" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveType" class="control-label"></label>
+                <input asp-for="LeaveType" class="form-control" asp-items="ViewBag.LeaveType" readonly></input>
+                <span asp-validation-for="LeaveType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveStatus" class="control-label"></label>
+                <select asp-for="LeaveStatus" class="form-control">
+                    <option value="True">Approve</option>
+                    <option value="False">Decline</option>
+                </select>
+                <span asp-validation-for="LeaveStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeaveMonth" class="control-label"></label>
+                <input asp-for="LeaveMonth" class="form-control" />
+                <span asp-validation-for="LeaveMonth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApprovedBy" class="control-label"></label>
+                <input asp-for="ApprovedBy" class="form-control" maxlength="20"/>
+                <span asp-validation-for="ApprovedBy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="LeaveDetails">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+

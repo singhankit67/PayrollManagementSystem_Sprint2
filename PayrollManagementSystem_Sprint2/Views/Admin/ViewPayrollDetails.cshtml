@@ -1,0 +1,20 @@
+﻿@model PayrollManagementSystem_Sprint2.Models.PayrollMaster
+
+@{
+    ViewData["Title"] = "ViewPayrollDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ViewPayrollDetails</h1>
+
+<div>
+    <h4>PayrollMaster</h4>
+    <hr />
+    <dl class="row">
+        <p>The Salary has been updated ! </p>
+    </dl>
+</div>
+<div>
+    <a asp-action="PayrollReport" asp-route-id="@Model.EmployeeId">Back to Salary Details</a> |
+    <a asp-action="Index">Back to Dashboard</a>
+</div>

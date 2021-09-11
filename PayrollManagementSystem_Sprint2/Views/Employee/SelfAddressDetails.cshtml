@@ -1,0 +1,55 @@
+﻿@model PayrollManagementSystem_Sprint2.Models.EmpAddress
+
+@{
+    ViewData["Title"] = "SelfAddressDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Self Address Details</h1>
+
+<div>
+    <h4>EmpAddress</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StreetAddress)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StreetAddress)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pincode)
+        </dt>
+        <dd class = "col-sm-10">
+            <p>@ViewBag.Pincode<p>
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Employee)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmployeeId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="EditAddress" asp-route-id="@Model.EmployeeId">Edit Address</a> |
+    <a asp-action="EmployeeDetailsView">Back to Details</a>
+</div>

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<PayrollManagementSystem_Sprint2.Models.LeaveMaster>
+
+@{
+    ViewData["Title"] = "LeaveMaster";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+        <h1>Leaves Taken by Employees</h1>
+
+
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LeavesAvailable)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LeavesAvailed)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LeavesBalance)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Employee)
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LeavesAvailable)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LeavesAvailed)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LeavesBalance)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EmployeeId)
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <p>
+            <a asp-action="Index">Back to Dashboard</a>
+        </p>
+
+        
