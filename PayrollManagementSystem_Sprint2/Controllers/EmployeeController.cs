@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using System.Net.Http.Headers;
 using Newtonsoft.Json;
 using PayrollManagementSystem_Sprint2.Models;
 using System;
@@ -33,18 +36,31 @@ namespace PayrollManagementSystem_Sprint2.Controllers
         }
 
         #region Employee
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> EmployeeDetailsView(string id)     //View self details
         {
             var emp = new EmployeeMaster();
-            HttpClient httpClient = new HttpClient();
-            var response = await httpClient.GetAsync($"{localHostLink}api/EmployeeMasters/{id}");
-            if (response.IsSuccessStatusCode)
+            using (var client = new HttpClient())
             {
-                string apiResponse = await response.Content.ReadAsStringAsync();
-                emp = JsonConvert.DeserializeObject<EmployeeMaster>(apiResponse);
-            }            
-            return View(emp);
+                client.BaseAddress = new Uri("https://localhost:44314/api/");
+                client.DefaultRequestHeaders.Clear();
+                //Define Request Data Format
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                EmployeeMaster empMasterObj = new EmployeeMaster();
+
+                HttpResponseMessage response = await client.GetAsync($"{localHostLink}api/EmployeeMasters/{id}");
+                if (response.IsSuccessStatusCode)
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    emp = JsonConvert.DeserializeObject<EmployeeMaster>(apiResponse);
+                    return View(emp);
+                }
+                else { return null; }
+                
+            }
+           
         }
 
         public async Task<IActionResult> SelfAddressDetails(string id)     //View self details
