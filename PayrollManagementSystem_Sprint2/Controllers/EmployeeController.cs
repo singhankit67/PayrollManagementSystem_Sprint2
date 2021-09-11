@@ -1,13 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PayrollManagementSystem_Sprint2.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -36,22 +33,10 @@ namespace PayrollManagementSystem_Sprint2.Controllers
         }
 
         #region Employee
-        [Authorize]
         [HttpGet]
         public async Task<IActionResult> EmployeeDetailsView(string id)     //View self details
         {
             var emp = new EmployeeMaster();
-            using (var client = new HttpClient())
-            {
-                client.BaseAddress = new Uri("https://localhost:44314/api/");
-                client.DefaultRequestHeaders.Clear();
-                //Define Request Data Format
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", HttpContext.Session.GetString("Token"));
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                EmployeeMaster empMasterObj = new EmployeeMaster();
-
-                HttpResponseMessage Response = await client.GetAsync($"Employee/{empMasterObj.EmployeeId}")
-            }
             HttpClient httpClient = new HttpClient();
             var response = await httpClient.GetAsync($"{localHostLink}api/EmployeeMasters/{id}");
             if (response.IsSuccessStatusCode)

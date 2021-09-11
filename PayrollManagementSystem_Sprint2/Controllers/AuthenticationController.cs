@@ -32,12 +32,12 @@ namespace PayrollManagementSystem_Sprint2.Controllers
         {
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://localhost:44314/api/");
+                client.BaseAddress = new Uri("");
                 client.DefaultRequestHeaders.Clear();
 
                 //Defining Request Data Format
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage Result = await client.PostAsync("Employee/login", content);
+                HttpResponseMessage Result = await client.PostAsync("employee/login", content);
                 if (Result.IsSuccessStatusCode)
                 {
                     //storing the response details recieved from web api
