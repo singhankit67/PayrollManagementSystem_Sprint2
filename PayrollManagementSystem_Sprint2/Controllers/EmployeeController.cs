@@ -50,7 +50,7 @@ namespace PayrollManagementSystem_Sprint2.Controllers
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 EmployeeMaster empMasterObj = new EmployeeMaster();
 
-                HttpResponseMessage Response = await client.GetAsync($"Employee/{empMasterObj.EmployeeId}")
+                HttpResponseMessage Response = await client.GetAsync($"Employee/{empMasterObj.EmployeeId}");
             }
             HttpClient httpClient = new HttpClient();
             var response = await httpClient.GetAsync($"{localHostLink}api/EmployeeMasters/{id}");
