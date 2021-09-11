@@ -50,16 +50,20 @@ namespace PayrollManagementSystem_Sprint2.Controllers
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 EmployeeMaster empMasterObj = new EmployeeMaster();
 
-                HttpResponseMessage Response = await client.GetAsync($"Employee/{empMasterObj.EmployeeId}")
+                HttpResponseMessage Response = await client.GetAsync($"{ localHostLink}api/EmployeeMasters/{id}");
+                if (Response.IsSuccessStatusCode)
+                {
+                    string apiResponse = await Response.Content.ReadAsStringAsync();
+                    emp = JsonConvert.DeserializeObject<EmployeeMaster>(apiResponse);
+                    return View(emp);
+                }
+                else
+                {
+                    return null;
+                }
+                
             }
-            HttpClient httpClient = new HttpClient();
-            var response = await httpClient.GetAsync($"{localHostLink}api/EmployeeMasters/{id}");
-            if (response.IsSuccessStatusCode)
-            {
-                string apiResponse = await response.Content.ReadAsStringAsync();
-                emp = JsonConvert.DeserializeObject<EmployeeMaster>(apiResponse);
-            }            
-            return View(emp);
+            
         }
 
         public async Task<IActionResult> SelfAddressDetails(string id)     //View self details
